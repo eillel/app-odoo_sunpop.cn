@@ -7,16 +7,15 @@
         <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
         <field name="arch" type="xml">
             <xpath expr="//search">
-                    <field name="team_id"/>
                 <superbar view_mode="kanban,tree">
+                    <field name="team_id"/>
+                    <field name="user_id"/>
                     <field name="partner_id"
                            widget="ztree_search"
                            model="res.partner"
-                           domain="[]"
+                           domain="[('customer', '=', True)]"
                            parent_key="parent_id"
-                           level="0"
-                    />
-                    <field name="user_id"/>
+                           level="0"/>
                 </superbar>
             </xpath>
         </field>
@@ -34,10 +33,9 @@
                     <field name="partner_id"
                            widget="ztree_search"
                            model="res.partner"
-                           domain="[]"
+                           domain="[('customer', '=', True)]"
                            parent_key="parent_id"
-                           level="0"
-                    />
+                           level="0"/>
                     <field name="user_id"/>
                 </superbar>
             </xpath>

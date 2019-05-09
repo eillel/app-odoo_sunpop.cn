@@ -1,36 +1,36 @@
 # -*- coding: utf-8 -*-
 
 # Created on 2018-11-26
-# author: 广州尚鹏，http://www.sunpop.cn
+# author: 广州尚鹏，https://www.sunpop.cn
 # email: 300883@qq.com
 # resource of Sunpop
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 # Odoo12在线用户手册（长期更新）
-# http://www.sunpop.cn/documentation/user/12.0/en/index.html
+# https://www.sunpop.cn/documentation/user/12.0/en/index.html
 
 # Odoo12在线开发者手册（长期更新）
-# http://www.sunpop.cn/documentation/12.0/index.html
+# https://www.sunpop.cn/documentation/12.0/index.html
 
 # Odoo10在线中文用户手册（长期更新）
-# http://www.sunpop.cn/documentation/user/10.0/zh_CN/index.html
+# https://www.sunpop.cn/documentation/user/10.0/zh_CN/index.html
 
 # Odoo10离线中文用户手册下载
-# http://www.sunpop.cn/odoo10_user_manual_document_offline/
+# https://www.sunpop.cn/odoo10_user_manual_document_offline/
 # Odoo10离线开发手册下载-含python教程，jquery参考，Jinja2模板，PostgresSQL参考（odoo开发必备）
-# http://www.sunpop.cn/odoo10_developer_document_offline/
+# https://www.sunpop.cn/odoo10_developer_document_offline/
 # description:
 
 {
-    'name': 'App Odoo Customize(Backend Debranding Title,Language,Documentation,Quick Debug,Clear Data)',
-    'version': '12.0.12.25',
+    'name': 'Odoo Customize(Debranding, My Odoo)',
+    'version': '12.19.04.30',
     'author': 'Sunpop.cn',
     'category': 'Productivity',
-    'website': 'http://www.sunpop.cn',
+    'website': 'https://www.sunpop.cn',
     'license': 'AGPL-3',
     'sequence': 2,
     'summary': """    
-    Quick customize,debranding,reset data, debug. Language Switcher. 
+    Quick customize, debranding,reset data, debug. Language Switcher. 
     Easy Delete data.reset account chart.
     odoo debrand, odoo debranding, customize my odoo. 
     """,
@@ -61,21 +61,37 @@
     18. Show/Hide Author and Website in Apps Dashboard
     19. One Click to clear all data (Sometime pls click twice)
     20. Show quick upgrade in app dashboard, click to show module info not go to odoo.com
-    21. Can clear and reset account chart. Be cautious.
-    22. Update online manual and developer document to odoo12.
+    21. Can clear and reset account chart. Be cautious
+    22. Update online manual and developer document to odoo12
+    23. Add reset or clear website blog data
+    24. Customize Odoo Native Module(eg. Enterprise) Url
+    25. Add remove expense data
+    26. Add multi uninstall modules
     
     This module can help to white label the Odoo.
     Also helpful for training and support for your odoo end-user.
     The user can get the help document just by one click.
     """,
     'images': ['static/description/banner.gif'],
-    'depends': ['base', 'web', 'mail'],
+    'depends': [
+        'base',
+        'web',
+        'mail',
+        'web_settings_dashboard',
+        'iap',
+        # 'digest',
+        # when enterprise
+        # 'web_mobile'
+    ],
     'data': [
-        'views/app_odoo_customize_view.xml',
-        'views/app_theme_config_settings_view.xml',
-        'views/ir_model_view.xml',
+        'views/app_odoo_customize_views.xml',
+        'views/app_theme_config_settings_views.xml',
+        'views/ir_model_views.xml',
+        'views/ir_views.xml',
         # data
         'data/ir_config_parameter.xml',
+        'data/ir_module_module.xml',
+        # 'data/digest_template_data.xml',
         'data/res_company_data.xml',
         'data/res_groups.xml',
         'security/ir.model.access.csv',
@@ -91,5 +107,5 @@
     'post_init_hook': 'post_init_hook',
     'installable': True,
     'application': True,
-    'auto_install': False,
+    'auto_install': True,
 }
